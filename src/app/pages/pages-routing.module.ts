@@ -16,6 +16,13 @@ const routes: Routes = [
           )
       },
       {
+        path: 'customers',
+        loadChildren: () =>
+          import('./customers/customers.module').then(
+            (m) => m.GettingStartedModule
+          )
+      },
+      {
         path: '',
         redirectTo: 'getting-started',
         pathMatch: 'full'
