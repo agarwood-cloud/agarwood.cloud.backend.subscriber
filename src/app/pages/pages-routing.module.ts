@@ -9,13 +9,6 @@ const routes: Routes = [
     component: PagesComponent,
     children: [
       {
-        path: 'getting-started',
-        loadChildren: () =>
-          import('./getting-started/getting-started.module').then(
-            (m) => m.GettingStartedModule
-          )
-      },
-      {
         path: 'customers',
         loadChildren: () =>
           import('./customers/customers.module').then(

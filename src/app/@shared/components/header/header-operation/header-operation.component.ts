@@ -12,10 +12,10 @@ import { I18nService } from 'ng-devui/i18n';
   styleUrls: ['./header-operation.component.scss'],
 })
 export class HeaderOperationComponent implements OnInit {
-  user: User;
-  languages = LANGUAGES;
-  language: string;
-  haveLoggedIn = false;
+  public user: User;
+  public languages = LANGUAGES;
+  public language: string;
+  public haveLoggedIn = false;
 
   constructor(
     private route: Router,
@@ -24,14 +24,14 @@ export class HeaderOperationComponent implements OnInit {
     private i18n: I18nService
   ) {}
 
-  ngOnInit(): void {
-    if (localStorage.getItem('userinfo')) {
-      this.user = JSON.parse(localStorage.getItem('userinfo')!);
+  public ngOnInit(): void {
+    if (localStorage.getItem('userInfo')) {
+      this.user = JSON.parse(localStorage.getItem('userInfo')!);
       this.haveLoggedIn = true;
     } else {
       this.authService.login('Admin', 'Devui.admin').subscribe((res) => {
         this.authService.setSession(res);
-        this.user = JSON.parse(localStorage.getItem('userinfo')!);
+        this.user = JSON.parse(localStorage.getItem('userInfo')!);
         this.haveLoggedIn = true;
       });
     }
@@ -39,18 +39,18 @@ export class HeaderOperationComponent implements OnInit {
     this.language = this.translate.currentLang;
   }
 
-  onSearch(event: any) {
+  public onSearch(event: any): void {
     console.log(event);
   }
 
-  onLanguageClick(language: string) {
+  public onLanguageClick(language: string): void {
     this.language = language;
     localStorage.setItem('lang', this.language);
     this.i18n.toggleLang(this.language);
     this.translate.use(this.language);
   }
 
-  handleUserOps(operation: string) {
+  public handleUserOps(operation: string): void {
     switch (operation) {
       case 'logout': {
         this.haveLoggedIn = false;

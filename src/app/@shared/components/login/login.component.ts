@@ -21,26 +21,26 @@ import { LANGUAGES } from 'src/config/language-config';
 export class LoginComponent implements OnInit {
   private destroy$ = new Subject();
 
-  tabActiveId: string | number = 'tab1';
-  showPassword = false;
-  horizontalLayout: FormLayout = FormLayout.Horizontal;
+  public tabActiveId: string | number = 'tab1';
+  public showPassword = false;
+  public horizontalLayout: FormLayout = FormLayout.Horizontal;
 
-  toastMessage: any;
-  languages = LANGUAGES;
-  language: string;
+  public toastMessage: any;
+  public languages = LANGUAGES;
+  public language: string;
 
-  tabItems: any;
+  public tabItems: any;
 
-  i18nValues: any;
+  public i18nValues: any;
 
-  formData = {
-    userAccount: 'Admin',
-    userAccountPassword: 'DevUI.admin',
-    userEmail: 'admin@devui.com',
-    userEmailPassword: 'devuiadmin'
+  public formData = {
+    userAccount: '',
+    userAccountPassword: '',
+    userEmail: '',
+    userEmailPassword: ''
   };
 
-  formRules: { [key: string]: DValidateRules } = {
+  public formRules: { [key: string]: DValidateRules } = {
     usernameRules: {
       validators: [
         { required: true },
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
   };
 
   @HostListener('window:keydown.enter')
-  onEnter() {
+  public onEnter(): void {
     this.onClick(this.tabActiveId);
   }
 
@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
     this.language = this.translate.currentLang;
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.translate
       .get('loginPage')
       .pipe(takeUntil(this.destroy$))
@@ -114,7 +114,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onClick(tabId: string | number) {
+  public onClick(tabId: string | number): void {
     switch (tabId) {
       case 'tab1':
         this.authService
@@ -160,14 +160,14 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onLanguageClick(language: string) {
+  public onLanguageClick(language: string):void {
     this.language = language;
     localStorage.setItem('lang', this.language);
     this.i18n.toggleLang(this.language);
     this.translate.use(this.language);
   }
 
-  updateTabItems(values: any) {
+  public updateTabItems(values: any): void {
     this.tabItems = [
       {
         id: 'tab1',
@@ -180,13 +180,13 @@ export class LoginComponent implements OnInit {
     ];
   }
 
-  onKeyUp(e: KeyboardEvent, tabId: string | number) {
+  public onKeyUp(e: KeyboardEvent, tabId: string | number): void {
     if (e.keyCode === 13) {
       this.onClick(tabId);
     }
   }
 
-  handleAuth(type: string){
+  public handleAuth(type: string): void {
     console.log(type);
     const config = {
       oauth_uri: 'https://github.com/login/oauth/authorize',

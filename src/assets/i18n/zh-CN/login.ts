@@ -1,6 +1,6 @@
 export default {
   loginPage: {
-    coperation: 'DevUI Design 出品',
+    coperation: 'Agarwood Cloud 出品',
     loginWays: {
       account: '账号密码登录',
       email: '邮箱登录',
@@ -13,8 +13,8 @@ export default {
     email: '邮箱',
     noticeMessage: {
       summary: '用户名或密码错误',
-      accountContent: '请输入正确的用户名密码，用户名：Admin，密码：DevUI.admin',
-      emailContent: '请输入正确的用户名密码，用户名：admin@devui.com，密码：devuiadmin',
+      accountContent: '请输入正确的用户名密码...',
+      emailContent: '请输入正确的用户名密码...',
     },
     other: '其它登录方式',
     register: '注册账户',
