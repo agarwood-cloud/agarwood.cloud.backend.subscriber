@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://local.agarwood-cloud.com/',
 };
 
 /*

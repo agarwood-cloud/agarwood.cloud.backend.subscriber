@@ -10,7 +10,7 @@ export class AuthService {
 
   // User Login
   public login(account: string, password: string): Observable<any>  { 
-    const res = this.http.post('http://localhost:18306/authentication/oauth/user/login', {
+    const res = this.http.post('/oauth-center/authentication/oauth/user/login', {
       username: account,
       password: password,
       version:  '1.0.0'

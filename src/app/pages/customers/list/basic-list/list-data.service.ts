@@ -37,7 +37,7 @@ export class ListDataService {
    * 获取用户列表
    */
   public getUserList(): Observable<any> {
-    return this.http.get('http://localhost:18316/official-account/v1/user');
+    return this.http.get('/user-center/official-account/v1/user');
   }
 
   private basicData: Item[] = [
