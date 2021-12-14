@@ -121,7 +121,7 @@ export class LoginComponent implements OnInit {
           .login(this.formData.userAccount, this.formData.userAccountPassword)
           .subscribe(
             (res) => {
-              this.authService.setSession(res);
+              this.authService.setSession(res.data);
               this.router.navigate(['/']);
             },
             (error) => {
