@@ -49,7 +49,7 @@
                 </ng-template>
               </d-cell>
             </d-column>
-            <d-column field="title" header="Title" [width]="'300px'">
+            <d-column field="openid" header="Openid" [width]="'100px'">
               <d-cell>
                 <ng-template let-cellItem="cellItem">
                   <span
@@ -63,21 +63,21 @@
                 </ng-template>
               </d-cell>
             </d-column>
-            <d-column field="priority" header="Priority" [width]="'100px'">
+            <d-column field="nickname" header="nickname" [width]="'100px'">
               <d-cell>
                 <ng-template let-cellItem="cellItem">
                   <d-tag [tag]="cellItem" [labelStyle]="cellItem"></d-tag>
                 </ng-template>
               </d-cell>
             </d-column>
-            <d-column field="iteration" header="Iteration" [width]="'100px'">
+            <d-column field="customer" header="customer" [width]="'100px'">
               <d-cell>
                 <ng-template let-cellItem="cellItem">
                   {{ cellItem }}
                 </ng-template>
               </d-cell>
             </d-column>
-            <d-column field="assignee" header="Assignee" [width]="'100px'">
+            <d-column field="subscribe" header="subscribe" [width]="'100px'">
               <d-cell>
                 <ng-template let-cellItem="cellItem">
                   <div class="over-flow-ellipsis">
@@ -91,7 +91,7 @@
                 </ng-template>
               </d-cell>
             </d-column>
-            <d-column field="status" header="Status" [width]="'100px'">
+            <d-column field="subscribeAt" header="subscribeAt" [width]="'100px'">
               <d-cell>
                 <ng-template let-cellItem="cellItem">
                   <span [ngClass]="cellItem.split(' ')[0]">{{
@@ -100,7 +100,7 @@
                 </ng-template>
               </d-cell>
             </d-column>
-            <d-column field="timeline" header="Timeline" [width]="'100px'">
+            <d-column field="unsubscribedAt" header="unsubscribedAt" [width]="'100px'">
               <d-cell>
                 <ng-template let-cellItem="cellItem">
                   <div class="over-flow-ellipsis">
@@ -135,8 +135,8 @@
           <d-pagination
             [size]="'sm'"
             [total]="pager.total"
-            [(pageSize)]="pager.pageSize"
-            [(pageIndex)]="pager.pageIndex"
+            [(pageSize)]="pager.perPage"
+            [(pageIndex)]="pager.page"
             [canViewTotal]="true"
             [canChangePageSize]="true"
             [canJumpPage]="true"

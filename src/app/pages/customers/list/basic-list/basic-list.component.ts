@@ -8,7 +8,7 @@ import {
 import { DialogService, FormLayout, TableWidthConfig } from 'ng-devui';
 import { Subscription } from 'rxjs';
 import { FormConfig } from 'src/app/@shared/components/admin-form';
-import { ListDataService, Item } from './list-data.service';
+import { Item, ListDataService } from './list-data.service';
 
 @Component({
   selector: 'da-basic-list',
@@ -16,16 +16,16 @@ import { ListDataService, Item } from './list-data.service';
   styleUrls: ['./basic-list.component.scss'],
 })
 export class BasicListComponent implements OnInit {
-  filterAreaShow = false;
+  public filterAreaShow = false;
 
-  options = ['normal', 'borderless', 'bordered'];
+  public options = ['normal', 'borderless', 'bordered'];
 
-  sizeOptions = ['sm', 'md', 'lg'];
+  public sizeOptions = ['sm', 'md', 'lg'];
 
-  layoutOptions = ['auto', 'fixed'];
+  public layoutOptions = ['auto', 'fixed'];
 
   // TODO: 类型问题 是因为tsconfig中开了strictTemplates 为true
-  searchForm: {
+  public searchForm: {
     borderType: '' | 'borderless' | 'bordered';
     size: 'sm' | 'md' | 'lg';
     layout: 'auto' | 'fixed';
@@ -35,33 +35,33 @@ export class BasicListComponent implements OnInit {
     layout: 'auto',
   };
 
-  tableWidthConfig: TableWidthConfig[] = [
+  public tableWidthConfig: TableWidthConfig[] = [
     {
       field: 'id',
       width: '150px',
     },
     {
-      field: 'title',
+      field: 'openid',
       width: '150px',
     },
     {
-      field: 'priority',
+      field: 'nickname',
       width: '100px',
     },
     {
-      field: 'iteration',
+      field: 'customer',
       width: '100px',
     },
     {
-      field: 'assignee',
+      field: 'subscribe',
       width: '100px',
     },
     {
-      field: 'status',
+      field: 'subscribeAt',
       width: '100px',
     },
     {
-      field: 'timeline',
+      field: 'unsubscribedAt',
       width: '100px',
     },
     {
@@ -70,9 +70,9 @@ export class BasicListComponent implements OnInit {
     },
   ];
 
-  basicDataSource: Item[] = [];
+  public basicDataSource: Item[] = [];
 
-  formConfig: FormConfig = {
+  public formConfig: FormConfig = {
     layout: FormLayout.Horizontal,
     items: [
       {
@@ -128,48 +128,51 @@ export class BasicListComponent implements OnInit {
     labelSize: '',
   };
 
-  formData = {};
+  public formData = {};
 
-  editForm = null;
+  public editForm = null;
 
-  editRowIndex = -1;
+  public editRowIndex = -1;
 
-  pager = {
+  public pager = {
     total: 0,
-    pageIndex: 1,
-    pageSize: 10,
+    page: 1,
+    perPage: 10,
   };
 
-  busy: Subscription;
+  public busy: Subscription;
 
   @ViewChild('EditorTemplate', { static: true })
   EditorTemplate: TemplateRef<any>;
 
-  constructor(
+  public constructor(
     private listDataService: ListDataService,
     private dialogService: DialogService,
     private cdr: ChangeDetectorRef
   ) {}
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.getList();
   }
 
-  search() {
+  public search(): void {
     this.getList();
   }
 
-  getList() {
+  public getList(): void {
     this.busy = this.listDataService
-      .getListData(this.pager)
+      .getUserList(this.pager)
       .subscribe((res) => {
-        const data = JSON.parse(JSON.stringify(res.pageList));
+        const data = res.data.list;
+        console.log('data', res);
+        
+        // const data = JSON.parse(JSON.stringify(res.pageList));
         this.basicDataSource = data;
-        this.pager.total = res.total;
+        this.pager.total = res.data.count;
       });
   }
 
-  editRow(row, index) {
+  public editRow(row, index): void {
     this.editRowIndex = index;
     this.formData = row;
     this.editForm = this.dialogService.open({
@@ -185,7 +188,7 @@ export class BasicListComponent implements OnInit {
     });
   }
 
-  deleteRow(index) {
+  public deleteRow(index): void {
     const results = this.dialogService.open({
       id: 'delete-dialog',
       width: '346px',
@@ -217,32 +220,32 @@ export class BasicListComponent implements OnInit {
     });
   }
 
-  onPageChange(e) {
-    this.pager.pageIndex = e;
+  public onPageChange(e): void  {
+    this.pager.page = e;
     this.getList();
   }
 
-  onSizeChange(e) {
-    this.pager.pageSize = e;
+  public onSizeChange(e): void {
+    this.pager.perPage = e;
     this.getList();
   }
 
-  reset() {
+  public reset(): void {
     this.searchForm = {
       borderType: '',
       size: 'md',
       layout: 'auto',
     };
-    this.pager.pageIndex = 1;
+    this.pager.page = 1;
     this.getList();
   }
 
-  onSubmitted(e) {
+  public onSubmitted(e): void  {
     this.editForm.modalInstance.hide();
     this.basicDataSource.splice(this.editRowIndex, 1, e);
   }
 
-  onCanceled() {
+  public onCanceled(): void {
     this.editForm.modalInstance.hide();
     this.editRowIndex = -1;
   }
