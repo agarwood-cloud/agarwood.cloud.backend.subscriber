@@ -2,37 +2,6 @@
   <da-layout-row [daGutter]="[24, 24]">
     <da-col-item [daSpan]="24" [daXs]="24">
       <div class="da-list-container">
-        <div class="da-list-header">
-          <div class="da-header-left">
-            <div class="da-header-item">
-              <div class="da-header-item-label">Border Type：</div>
-              <d-select
-                [placeholder]="'change table style'"
-                [options]="options"
-                [(ngModel)]="searchForm.borderType"
-              ></d-select>
-            </div>
-            <div class="da-header-item">
-              <div class="da-header-item-label">Size：</div>
-              <d-select
-                [placeholder]="'change table size'"
-                [options]="sizeOptions"
-                [(ngModel)]="searchForm.size"
-              ></d-select>
-            </div>
-            <div class="da-header-item">
-              <div class="da-header-item-label">Layout：</div>
-              <d-select
-                [placeholder]="'change table layout'"
-                [options]="layoutOptions"
-                [(ngModel)]="searchForm.layout"
-              ></d-select>
-            </div>
-          </div>
-          <div class="header-right">
-            <d-button (click)="reset()">Reset</d-button>
-          </div>
-        </div>
         <div class="list-content" dLoading [loading]="busy">
           <d-data-table
             #datatable
@@ -55,7 +24,7 @@
                   <span
                     [title]="cellItem"
                     class="over-flow-ellipsis"
-                    [style.width]="'300px'"
+                    [style.width]="'100px'"
                   >
                     <d-tag [tag]="'Epic'" [labelStyle]="'epic'"></d-tag>
                     {{ cellItem }}
@@ -66,7 +35,9 @@
             <d-column field="nickname" header="nickname" [width]="'100px'">
               <d-cell>
                 <ng-template let-cellItem="cellItem">
-                  <d-tag [tag]="cellItem" [labelStyle]="cellItem"></d-tag>
+                  <d-avatar [name]="cellItem" [width]="24" [height]="24"></d-avatar>
+                  {{ cellItem }}
+                  <!-- <d-tag [tag]="cellItem" [labelStyle]="cellItem"></d-tag> -->
                 </ng-template>
               </d-cell>
             </d-column>
@@ -81,26 +52,28 @@
               <d-cell>
                 <ng-template let-cellItem="cellItem">
                   <div class="over-flow-ellipsis">
-                    <d-avatar
-                      [name]="cellItem"
-                      [width]="24"
-                      [height]="24"
-                    ></d-avatar>
-                    <span style="margin-left: 6px">{{ cellItem }}</span>
+                    {{ cellItem }}
                   </div>
                 </ng-template>
               </d-cell>
             </d-column>
-            <d-column field="subscribeAt" header="subscribeAt" [width]="'100px'">
+            <d-column field="subscribeAt" header="subscribeAt" [width]="'150px'">
               <d-cell>
                 <ng-template let-cellItem="cellItem">
-                  <span [ngClass]="cellItem.split(' ')[0]">{{
-                    cellItem || "--"
-                  }}</span>
+                  {{ cellItem }}
                 </ng-template>
               </d-cell>
             </d-column>
             <d-column field="unsubscribedAt" header="unsubscribedAt" [width]="'100px'">
+              <d-cell>
+                <ng-template let-cellItem="cellItem">
+                  <div class="over-flow-ellipsis">
+                    {{ cellItem }}
+                  </div>
+                </ng-template>
+              </d-cell>
+            </d-column>
+            <d-column field="subscribeScene" header="subscribeScene" [width]="'100px'">
               <d-cell>
                 <ng-template let-cellItem="cellItem">
                   <div class="over-flow-ellipsis">

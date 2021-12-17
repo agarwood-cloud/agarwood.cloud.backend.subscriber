@@ -38,11 +38,11 @@ export class BasicListComponent implements OnInit {
   public tableWidthConfig: TableWidthConfig[] = [
     {
       field: 'id',
-      width: '150px',
+      width: '100px',
     },
     {
       field: 'openid',
-      width: '150px',
+      width: '100px',
     },
     {
       field: 'nickname',
@@ -62,6 +62,10 @@ export class BasicListComponent implements OnInit {
     },
     {
       field: 'unsubscribedAt',
+      width: '100px',
+    },
+    {
+      field: 'subscribeScene',
       width: '100px',
     },
     {
@@ -172,7 +176,7 @@ export class BasicListComponent implements OnInit {
       });
   }
 
-  public editRow(row, index): void {
+  public editRow(row: Item, index: number): void {
     this.editRowIndex = index;
     this.formData = row;
     this.editForm = this.dialogService.open({
@@ -188,7 +192,7 @@ export class BasicListComponent implements OnInit {
     });
   }
 
-  public deleteRow(index): void {
+  public deleteRow(index: number): void {
     const results = this.dialogService.open({
       id: 'delete-dialog',
       width: '346px',

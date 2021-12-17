@@ -1,8 +1,23 @@
 export default function (values: any) {
   return [
     {
-      title: values.customers.title,
+      title: values.dashboard.title,
       open: true,
+      children: [
+        {
+          title: values.dashboard.overview,
+          link: '/pages/dashboard/overview',
+        },
+        {
+          title: values.dashboard.customerService,
+          link: '/pages/dashboard/customer-service',
+        }
+      ],
+      link: '/pages/dashboard/overview',
+      menuIcon: 'icon icon-console',
+    },
+    {
+      title: values.customers.title,
       children: [
         {
           title: values.customers.list,
@@ -10,7 +25,29 @@ export default function (values: any) {
         }
       ],
       link: '/pages/customers/list',
-      menuIcon: 'icon icon-console',
+      menuIcon: 'icon icon-member',
+    },
+    {
+      title: values.product.title,
+      children: [
+        {
+          title: values.product.list,
+          link: '/pages/product/list',
+        }
+      ],
+      link: '/pages/product/list',
+      menuIcon: 'icon icon-marketplace',
+    },
+    {
+      title: values.order.title,
+      children: [
+        {
+          title: values.order.list,
+          link: '/pages/order/list',
+        }
+      ],
+      link: '/pages/order/list',
+      menuIcon: 'icon icon-list-view',
     }
   ];
 }
