@@ -9,15 +9,33 @@ const routes: Routes = [
     component: PagesComponent,
     children: [
       {
-        path: 'getting-started',
+        path: 'dashboard',
+        loadChildren: () => import('./dashboard/dashboard.module').then(
+          m => m.DashboardModule
+        ),
+      },
+      { 
+        path: 'customers',
         loadChildren: () =>
-          import('./getting-started/getting-started.module').then(
+          import('./customers/customers.module').then(
             (m) => m.GettingStartedModule
           )
       },
+      { 
+        path: 'product', 
+        loadChildren: () => import('./product/product.module').then(
+          m => m.ProductModule
+        ) 
+      },
+      { 
+        path: 'order',
+        loadChildren: () => import('./order/order.module').then(
+          m => m.OrderModule
+          ) 
+        },
       {
         path: '',
-        redirectTo: 'getting-started',
+        redirectTo: 'dashboard',
         pathMatch: 'full'
       },
       {
@@ -25,7 +43,7 @@ const routes: Routes = [
         redirectTo: 'getting-started'
       }
     ]
-  }
+  },
 ];
 
 @NgModule({

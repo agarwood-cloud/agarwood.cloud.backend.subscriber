@@ -10,7 +10,7 @@ import { DaLayoutConfig, DaLayoutService } from '../@shared/layouts/da-layout';
 import { DaScreenMediaQueryService } from '../@shared/layouts/da-grid';
 import { SideMenuComponent } from '../@shared/components/side-menu/side-menu.component';
 import { Theme } from 'ng-devui/theme';
-
+import menu from './menu';
 
 @Component({
   selector: 'da-pages',
@@ -94,20 +94,7 @@ export class PagesComponent implements OnInit {
   }
 
   updateMenu(values: any) {
-    this.menu = [
-      {
-        title: values['gettingStarted']['title'],
-        open: true,
-        children: [
-          {
-            title: values['gettingStarted']['sample'],
-            link: '/pages/getting-started/sample',
-          },
-        ],
-        link: '/pages/getting-started',
-        menuIcon: 'icon icon-console',
-      },
-    ];
+    this.menu = menu(values);
   }
 
   openSideMenuDrawer() {

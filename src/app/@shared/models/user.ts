@@ -1,6 +1,12 @@
 export interface User {
-  userName: string;
-  gender: string;
-  email: string;
-  phoneNumber: string;
+  id: number;
+  username: string;
+  email?: string|null;
+  phone?: string|null;
+  gender?: string|null;
+  status?: string|null;
+  createdAt?: string|null;
+  updatedAt?: string|null;
+  deletedAt?: string|null;
+  token?: string|null;
 }

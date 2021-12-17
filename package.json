@@ -1,10 +1,10 @@
 {
-  "name": "backend",
-  "version": "0.0.0",
+  "name": "agarwood",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prettier": "prettier --config ./.prettierrc --write \"src/app/pages/**/**/*.html\"",
@@ -31,6 +31,7 @@
     "ng-devui-materials": "^1.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
+    "tslint": "^6.1.3",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

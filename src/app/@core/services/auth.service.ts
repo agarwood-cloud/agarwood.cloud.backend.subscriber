@@ -1,68 +1,49 @@
 import { Injectable } from '@angular/core';
-import { throwError, of } from 'rxjs';
+import { throwError, of, Observable } from 'rxjs';
 import { User } from 'src/app/@shared/models/user';
-
-const USERS = [
-  {
-    account: 'Admin',
-    gender: 'male',
-    userName: 'Admin',
-    password: 'DevUI.admin',
-    phoneNumber: '19999996666',
-    email: 'admin@devui.com',
-    userId: '100'
-  },
-  {
-    account: 'User',
-    gender: 'female',
-    userName: 'User',
-    password: 'DevUI.user',
-    phoneNumber: '19900000000',
-    email: 'user@devui.com',
-    userId: '200'
-  },
-  {
-    account: 'admin@devui.com',
-    gender: 'male',
-    userName: 'Admin',
-    password: 'devuiadmin',
-    phoneNumber: '19988888888',
-    email: 'admin@devui.com',
-    userId: '300'
-  }
-];
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
-  constructor() {}
 
-  login(account: string, password: string) {
-    for (let i = 0; i < USERS.length; i++) {
-      if (account === USERS[i].account && password === USERS[i].password) {
-        let { userName, gender, phoneNumber, email } = USERS[i];
-        let userInfo: User = { userName, gender, phoneNumber, email };
-        return of(userInfo);
-      }
-    }
-    return throwError(
-      'Please make sure you have input correct account and password'
-    );
+  constructor(private http: HttpClient) {}
+
+  // User Login
+  public login(account: string, password: string): Observable<any>  { 
+    const res = this.http.post('/oauth-center/authentication/oauth/user/login', {
+      username: account,
+      password: password,
+      version:  '1.0.0'
+    });
+
+    return res;
+    
+    // for (let i = 0; i < USERS.length; i++) {
+    //   if (account === USERS[i].account && password === USERS[i].password) {
+    //     let { userName, gender, phoneNumber, email } = USERS[i];
+    //     let userInfo: User = { userName, gender, phoneNumber, email };
+    //     return of(userInfo);
+    //   }
+    // }
+    // return throwError(
+    //   'Please make sure you have input correct account and password'
+    // );
   }
 
-  logout() {
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
-    localStorage.removeItem('userinfo');
+  public logout(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('expiredAt');
+    localStorage.removeItem('userInfo');
   }
 
-  setSession(userInfo: User) {
-    localStorage.setItem('id_token', '123456');
-    localStorage.setItem('userinfo', JSON.stringify(userInfo));
-    localStorage.setItem('expires_at', '120');
+  public setSession(userInfo: User): void {
+    localStorage.setItem('token', userInfo.token);
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    localStorage.setItem('expiredAt', '3600');
   }
 
-  isUserLoggedIn() {
-    if (localStorage.getItem('userinfo')) {
+  public isUserLoggedIn(): boolean {
+    if (localStorage.getItem('userInfo')) {
       return true;
     } else {
       return false;

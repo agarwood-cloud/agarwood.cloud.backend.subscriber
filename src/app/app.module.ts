@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,7 @@ import { CoreModule } from './@core/core.module';
 import { SharedModule } from './@shared/shared.module';
 import { Observable, of } from 'rxjs'; 
 import { I18N } from '../config/language-config';
+import { HeaderInterceptor } from './@core/services/header-Interceptor.service';
 
 class I18NLoader implements TranslateLoader {
   getTranslation(lang: 'zh-cn' | 'en-us'): Observable<Object> {
@@ -32,7 +33,9 @@ class I18NLoader implements TranslateLoader {
       }
     })
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
