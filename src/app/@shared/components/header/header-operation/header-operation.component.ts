@@ -28,12 +28,6 @@ export class HeaderOperationComponent implements OnInit {
     if (localStorage.getItem('userInfo')) {
       this.user = JSON.parse(localStorage.getItem('userInfo')!);
       this.haveLoggedIn = true;
-    } else {
-      this.authService.login('Admin', 'Devui.admin').subscribe((res) => {
-        this.authService.setSession(res);
-        this.user = JSON.parse(localStorage.getItem('userInfo')!);
-        this.haveLoggedIn = true;
-      });
     }
 
     this.language = this.translate.currentLang;
@@ -55,6 +49,13 @@ export class HeaderOperationComponent implements OnInit {
       case 'logout': {
         this.haveLoggedIn = false;
         this.authService.logout();
+        // 后台做一个退出操作
+        this.authService.logoutServer().subscribe(
+          (res: any) => {
+            console.log(res);
+          }, (err: any) => {
+            console.log(err);
+          });
         this.route.navigate(['/', 'login']);
         break;
       }

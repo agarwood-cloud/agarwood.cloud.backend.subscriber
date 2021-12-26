@@ -10,13 +10,13 @@ export class AuthService {
 
   // User Login
   public login(account: string, password: string): Observable<any>  { 
-    const res = this.http.post('/oauth-center/authentication/oauth/user-login', {
+    return this.http.post('/oauth-center/authentication/oauth/user-login', {
       username: account,
       password: password,
       version:  '1.0.0'
     });
 
-    return res;
+    // return res;
     
     // for (let i = 0; i < USERS.length; i++) {
     //   if (account === USERS[i].account && password === USERS[i].password) {
@@ -34,6 +34,10 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('expiredAt');
     localStorage.removeItem('userInfo');
+  }
+
+  public logoutServer(): Observable<any> {
+    return this.http.post('/oauth-center/authentication/oauth/user-logout', {});
   }
 
   public setSession(userInfo: User): void {
