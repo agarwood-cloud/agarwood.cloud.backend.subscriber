@@ -17,7 +17,7 @@ export class HeaderOperationComponent implements OnInit {
   public language: string;
   public haveLoggedIn = false;
 
-  constructor(
+  public constructor(
     private route: Router,
     private authService: AuthService,
     private translate: TranslateService,
