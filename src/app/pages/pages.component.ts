@@ -1,15 +1,15 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { DialogService } from 'ng-devui/modal';
+import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { DrawerService, IDrawerOpenResult } from 'ng-devui/drawer';
+import { DialogService } from 'ng-devui/modal';
+import { Theme } from 'ng-devui/theme';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { PersonalizeComponent } from '../@shared/components/personalize/personalize.component';
 import { PersonalizeService } from '../@core/services/personalize.service';
-import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
-import { DaLayoutConfig, DaLayoutService } from '../@shared/layouts/da-layout';
-import { DaScreenMediaQueryService } from '../@shared/layouts/da-grid';
+import { PersonalizeComponent } from '../@shared/components/personalize/personalize.component';
 import { SideMenuComponent } from '../@shared/components/side-menu/side-menu.component';
-import { Theme } from 'ng-devui/theme';
+import { DaScreenMediaQueryService } from '../@shared/layouts/da-grid';
+import { DaLayoutConfig, DaLayoutService } from '../@shared/layouts/da-layout';
 import menu from './menu';
 
 @Component({
@@ -19,15 +19,15 @@ import menu from './menu';
 })
 export class PagesComponent implements OnInit {
   private destroy$ = new Subject();
-  menu: any;
+  public menu: any;
 
-  layoutConfig: DaLayoutConfig;
-  isSidebarShrink: boolean = false;
-  isSidebarFold: boolean = false;
+  public layoutConfig: DaLayoutConfig;
+  public isSidebarShrink = false;
+  public isSidebarFold = false;
 
-  sideDrawer: IDrawerOpenResult;
+  public sideDrawer: IDrawerOpenResult;
 
-  constructor(
+  public constructor(
     private drawerService: DrawerService,
     private dialogService: DialogService,
     private personalizeService: PersonalizeService,
@@ -65,7 +65,7 @@ export class PagesComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.translate
       .get('page')
       .pipe(takeUntil(this.destroy$))
@@ -90,14 +90,14 @@ export class PagesComponent implements OnInit {
       } else {
         this.render2.removeClass(document.body, 'is-dark');
       }
-    })
+    });
   }
 
-  updateMenu(values: any) {
+  public updateMenu(values: any): void {
     this.menu = menu(values);
   }
 
-  openSideMenuDrawer() {
+  public openSideMenuDrawer(): void {
     this.drawerService.open({
       drawerContentComponent: SideMenuComponent,
       width: '240px',
@@ -109,7 +109,7 @@ export class PagesComponent implements OnInit {
     });
   }
 
-  personalizeConfig() {
+  public personalizeConfig(): void {
     const result = this.dialogService.open({
       id: 'theme',
       width: '800px',
@@ -122,7 +122,7 @@ export class PagesComponent implements OnInit {
     });
   }
 
-  sidebarShrink(isShrink: boolean) {
+  public sidebarShrink(isShrink: boolean): void {
     this.isSidebarShrink = isShrink;
 
     if (this.layoutConfig.sidebar.firSidebar) {
@@ -134,7 +134,7 @@ export class PagesComponent implements OnInit {
     this.layoutService.updateLayoutConfig(this.layoutConfig);
   }
 
-  sidebarFold(isFold: boolean) {
+  public sidebarFold(isFold: boolean): void {
     this.isSidebarFold = isFold;
 
     if (this.layoutConfig.sidebar.firSidebar) {
@@ -143,7 +143,7 @@ export class PagesComponent implements OnInit {
     }
   }
 
-  destroy() {
+  public destroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }

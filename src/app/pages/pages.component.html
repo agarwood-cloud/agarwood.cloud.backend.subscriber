@@ -12,17 +12,17 @@
       class="da-header-collapsed-button"
       (click)="openSideMenuDrawer()"
     >
-      <i class="icon icon-list-view"></i>
+      <em class="icon icon-list-view"></em>
     </span>
     <da-navbar
       *ngIf="layoutConfig.id === 'topNav' && !isSidebarFold"
       [data]="menu"
       [mode]="'top'"
-      style="flex: 1 1 0%"
+      style="flex: 1 1 0"
     ></da-navbar>
     <div
       *ngIf="layoutConfig.id !== 'topNav' || isSidebarFold"
-      style="flex: 1 1 0%"
+      style="flex: 1 1 0"
     ></div>
     <da-header></da-header>
   </da-layout-header>
@@ -43,13 +43,13 @@
           class="da-sidebar-tools-item"
           (click)="sidebarShrink(!isSidebarShrink)"
         >
-          <i
+          <em
             class="icon"
             [ngClass]="{
               'icon-fold-bar': !isSidebarShrink,
               'icon-unfold-bar': isSidebarShrink
             }"
-          ></i>
+          ></em>
         </li>
       </ul>
     </div>

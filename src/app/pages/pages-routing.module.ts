@@ -18,7 +18,7 @@ const routes: Routes = [
         path: 'customers',
         loadChildren: () =>
           import('./customers/customers.module').then(
-            (m) => m.GettingStartedModule
+            (m) => m.CustomersModule
           )
       },
       { 
@@ -33,6 +33,10 @@ const routes: Routes = [
           m => m.OrderModule
           ) 
         },
+      { 
+        path: 'chat', 
+        loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule) 
+      },
       {
         path: '',
         redirectTo: 'dashboard',
