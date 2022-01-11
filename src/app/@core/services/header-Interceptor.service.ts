@@ -1,18 +1,33 @@
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class HeaderInterceptor implements HttpInterceptor {
 
-    // 触发拦截器
-    public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        // 这里加入token值
-        return next.handle(this.addToken(req, localStorage.getItem('token')));
+    /**
+     * add Bearer token to Http Header
+     *
+     * @param req HttpRequest
+     * @param token string
+     * @private
+     */
+    private static addToken(req: HttpRequest<any>, token: string): HttpRequest<any> {
+        return req.clone({
+            setHeaders: { Authorization: `Bearer ` + token },
+            // todo add officialAccountId params
+            // params: req.params.set('officialAccountId', 'officialAccountId')
+        });
     }
 
-    // 加入header 头
-    private addToken(req: HttpRequest<any>, token: string): HttpRequest<any> {
-        return req.clone({ setHeaders: { Authorization: `Bearer ` + token } });
+    /**
+     * Identifies and handles a given HTTP request.
+     *
+     * @param req HttpRequest
+     * @param next HttpHandler
+     */
+    public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        // 这里加入token值
+        return next.handle(HeaderInterceptor.addToken(req, localStorage.getItem('token')));
     }
 }

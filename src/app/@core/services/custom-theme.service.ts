@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { devuiDarkTheme, devuiLightTheme } from 'ng-devui/theme';
 // @ts-ignore
 import * as Color from 'color';
+import { devuiDarkTheme, devuiLightTheme } from 'ng-devui/theme';
 import { ColorHierarchyMap } from './color-hierarchy';
 type HslModelKey = 'h' | 's' | 'l' | 'a' | 'sp' | 'lp' | 'ap';
 type HsvModelKey = 'h' | 's' | 'v' | 'a' | 'sp' | 'vp' | 'ap';

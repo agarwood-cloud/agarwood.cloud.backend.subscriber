@@ -48,6 +48,17 @@ export default function (values: any) {
       ],
       link: '/pages/order/list',
       menuIcon: 'icon icon-list-view',
+    },
+    {
+      title: values.chat.title,
+      children: [
+        {
+          title: values.chat.modal,
+          link: '/pages/chat/modal',
+        }
+      ],
+      link: '/pages/chat/modal',
+      menuIcon: 'icon icon-clever-customer',
     }
   ];
 }

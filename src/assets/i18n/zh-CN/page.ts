@@ -17,5 +17,9 @@ export default {
       title: '订单管理',
       list: '订单列表',
     },
+    chat: {
+      title: '客服平台',
+      modal: '实时聊天'
+    }
   },
 };

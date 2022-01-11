@@ -13,16 +13,16 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
-  i18nValues: any;
+  public i18nValues: any;
 
-  constructor(
+  public constructor(
     private router: Router,
     private authService: AuthService,
     private toastService: ToastService,
     private translate: TranslateService
   ) {}
 
-  canActivate(
+  public canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ):
@@ -42,7 +42,7 @@ export class AuthGuardService implements CanActivate {
         ],
         life: 2000,
       });
-      this.router.navigate(['login']);
+      this.router.navigate(['login']).then(r => console.log('navigate', r));
       return false;
     } else {
       return true;

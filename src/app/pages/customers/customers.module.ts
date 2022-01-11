@@ -11,4 +11,4 @@ import { BasicListModule } from './list/basic-list/basic-list.module';
   imports: [SharedModule, CustomersRoutingModule, BasicListModule],
   providers: [],
 })
-export class GettingStartedModule {}
+export class CustomersModule {}
