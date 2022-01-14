@@ -19,7 +19,7 @@ export default {
     },
     chat: {
       title: '客服平台',
-      modal: '实时聊天'
+      online: '实时聊天'
     }
   },
 };

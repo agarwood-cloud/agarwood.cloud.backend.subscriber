@@ -1,0 +1,28 @@
+<div>
+    <div class="chat-sidebar-header">
+        <d-badge [showDot]="true" status="success">
+            <d-avatar [name]="customer.username" imgSrc="https://t16img.yangkeduo.com/pdd_ims/mainObject/v1/pub_20201018e8e9ac1b08d74e1ea7473b9f24ced89f.jpg"></d-avatar>
+        </d-badge>
+    </div>
+    <div class="chat-sidebar-content">
+        <d-tabs [(activeTab)]="activeTab" type="slider">
+            <d-tab id="chat-list">
+                <ng-template dTabTitle>
+                    今天接待
+                </ng-template>
+                <ng-template dTabContent>
+                    今天接待-----
+                </ng-template>
+            </d-tab>
+            <d-tab id="chat-all">
+                <ng-template dTabTitle>
+                    全部会话
+                </ng-template>
+                <ng-template dTabContent>
+                    全部会话--------
+                </ng-template>
+            </d-tab>
+        </d-tabs>
+    </div>
+</div>
+

@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { throwError, of, Observable } from 'rxjs';
-import { User } from 'src/app/@shared/models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, of, throwError } from 'rxjs';
+import { User } from 'src/app/@shared/models/user';
 
 @Injectable()
 export class AuthService {
@@ -9,25 +9,12 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   // User Login
-  public login(account: string, password: string): Observable<any>  { 
+  public login(account: string, password: string): Observable<any>  {
     return this.http.post('/oauth-center/authentication/oauth/user-login', {
       username: account,
       password: password,
       version:  '1.0.0'
     });
-
-    // return res;
-    
-    // for (let i = 0; i < USERS.length; i++) {
-    //   if (account === USERS[i].account && password === USERS[i].password) {
-    //     let { userName, gender, phoneNumber, email } = USERS[i];
-    //     let userInfo: User = { userName, gender, phoneNumber, email };
-    //     return of(userInfo);
-    //   }
-    // }
-    // return throwError(
-    //   'Please make sure you have input correct account and password'
-    // );
   }
 
   public logout(): void {

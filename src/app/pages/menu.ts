@@ -53,11 +53,11 @@ export default function (values: any) {
       title: values.chat.title,
       children: [
         {
-          title: values.chat.modal,
-          link: '/pages/chat/modal',
+          title: values.chat.online,
+          link: '/pages/chat',
         }
       ],
-      link: '/pages/chat/modal',
+      link: '/pages/chat',
       menuIcon: 'icon icon-clever-customer',
     }
   ];

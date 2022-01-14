@@ -1,40 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { io } from 'socket.io-client';
+import { ChatSocketService } from './services/chat-socket.service';
 
 @Component({
   selector: 'app-chat',
-  template: `<router-outlet></router-outlet>`
+  // template: `<router-outlet></router-outlet>`,
+  templateUrl: './chat.component.html',
+  styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
 
-  public constructor() { }
+  /**
+   * socket.io client service
+   *
+   * @private
+   */
+  private readonly socket: ChatSocketService;
 
+  /**
+   * get socket.io client instance
+   */
+  public constructor() {
+    this.socket = new ChatSocketService();
+  }
+
+  /**
+   * A callback method that is invoked immediately after the
+   * default change detector has checked the directive's
+   * data-bound properties for the first time,
+   * and before any of the view or content children have been checked.
+   * It is invoked only once when the directive is instantiated.
+   */
   public ngOnInit(): void {
-    console.log('aaaa', localStorage.getItem('userInfo'));
-    const socket = io('http://localhost:3000/chat', {
-      auth: {
-        Authorization: `${localStorage.getItem('userInfo')}`,
-        id: JSON.parse(
-          localStorage.getItem('userInfo') as string
-        ).id
-      }
-    });
-    console.log('bbb');
 
-    socket.emit('wechat.message', { hello: 'world-----', a: 'b' })
-    
-    // client-side
-    socket.on("connect", () => {
-      console.log(socket.id);
-    });
+    this.socket.sendTextMessage('111111', 'test');
 
-    socket.on("disconnect", () => {
-      console.log(socket.id); // undefined
-    });
+    this.socket.sendImageMessage('dddd', 'dddd');
 
-    socket.on("hello", (event) => {
-      console.log('event', event); // undefined
-    });
+    this.socket.sendNewsItemMessage('adfadf', 'adfadfa', 'adfads', 'fadfad');
+
+    this.socket.sendVideoMessage('adfadf', 'adfadfa', 'adfadfa', 'adfadfa', 'adfadf', 'adfadfa');
+
+    this.socket.sendVoiceMessage('adfadf', 'adfadfa', 'adfadfa');
+
+    console.log('ChatComponent-ngOnInit');
   }
 
 }
