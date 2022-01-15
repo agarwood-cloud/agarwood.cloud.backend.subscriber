@@ -1,0 +1,15 @@
+<div>
+  <d-row>
+    <d-col [dSpan]="4">
+      <d-avatar [name]="''" *ngIf="!user.headImgUrl"></d-avatar>
+      <d-avatar [name]="user.nickname" [imgSrc]="user.headImgUrl" *ngIf="user.headImgUrl"></d-avatar>
+    </d-col>
+    <d-col [dSpan]="16">
+      <span>{{ user.nickname }}</span>
+      <div class="last-message-content" *ngIf="message">{{ message.content }}</div>
+    </d-col>
+    <d-col [dSpan]="4" *ngIf="message">
+      <div class="last-message-time">{{ message.createdAt | dRelativeTime: limit | async }}</div>
+    </d-col>
+  </d-row>
+</div>

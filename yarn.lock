@@ -2832,10 +2832,10 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-date-fns@^1.30.1:
-  version "1.30.1"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
-  integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
+date-fns@^2.20.0:
+  version "2.28.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.28.0.tgz#9570d656f5fc13143e50c975a3b6bbeb46cd08b2"
+  integrity sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==
 
 date-format@^2.1.0:
   version "2.1.0"
@@ -5333,15 +5333,15 @@ ng-devui-materials@^1.0.0:
   resolved "https://registry.yarnpkg.com/ng-devui-materials/-/ng-devui-materials-1.0.0.tgz#a4d80b6feeecd66bb818ce30ff9a538e84727c88"
   integrity sha512-e7eM7qShicHbr3JxjP64dHyhR2a66WkvOLedrClHYlczsero9e6PA6xszHw2bFrzWGieN/nT/JDsJWVsErXQuA==
 
-ng-devui@^12.0.0-beta.1:
-  version "12.2.0"
-  resolved "https://registry.yarnpkg.com/ng-devui/-/ng-devui-12.2.0.tgz#33719785370a72d63dbc8ffa0804353aa45f22fd"
-  integrity sha512-y1UJPNAdDOSxfREtnXd+W5gftSaoDw1ojv+fx7KoDx6qN5VZRqspDaTrYYWbs35kPVGHQh2x5dUvVkqLPoZR6Q==
+ng-devui@^12.0.0:
+  version "12.3.0"
+  resolved "https://registry.yarnpkg.com/ng-devui/-/ng-devui-12.3.0.tgz#c593a06f122b0dfe7c4efae6965e9a5510423f67"
+  integrity sha512-mi6txDFvwvGJ39PGmBLMF4BBLNspIrV7pCrXD1SVeXra5Z0clSMMce6eN2+ppOCl+LmtjNrr6Tgr7Ef5BlzVkQ==
   dependencies:
     "@angular/cdk" "^12.0.0"
     "@popperjs/core" "^2.5.4"
     css-vars-ponyfill "^2.3.2"
-    date-fns "^1.30.1"
+    date-fns "^2.20.0"
     enquire.js "^2.1.6"
     lodash-es "^4.17.11"
     tslib "^2.0.0"

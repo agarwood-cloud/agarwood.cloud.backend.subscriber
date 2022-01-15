@@ -1,11 +1,21 @@
-<da-layout-row>
-    <da-col-item [daXs]="6">
-        <app-chat-sidebar></app-chat-sidebar>
-    </da-col-item>
-    <da-col-item [daXs]="12">
-        <app-chat-content></app-chat-content>
-    </da-col-item>
-    <da-col-item [daXs]="6">
-        <app-chat-toolbar></app-chat-toolbar>
-    </da-col-item>
-</da-layout-row>
+<d-splitter class="chat-splitter-border">
+  <!--left sidebar -->
+  <d-splitter-pane size="25%" minSize="20%">
+    <div class="chat-sidebar-pane-content">
+      <app-chat-sidebar></app-chat-sidebar>
+    </div>
+  </d-splitter-pane>
+  <!--content -->
+  <d-splitter-pane minSize="15%">
+    <div class="chat-pane-content">
+      <app-chat-content></app-chat-content>
+    </div>
+  </d-splitter-pane>
+  <!-- toolbar -->
+  <d-splitter-pane minSize="15%" [collapsible]="true" [collapseDirection]="'before'">
+    <div class="chat-pane-content">
+      <app-chat-toolbar></app-chat-toolbar>
+    </div>
+  </d-splitter-pane>
+</d-splitter>
+<!---->
