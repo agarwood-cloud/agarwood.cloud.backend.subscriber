@@ -1,1 +1,33 @@
-<p>chat-content works!</p>
+<d-card>
+  <d-row>
+    <d-col [dSpan]="2">
+      <d-avatar style="text-align: right" [gender]="'Female'" [name]="'组件头像'"></d-avatar>
+    </d-col>
+    <d-col [dSpan]="16">
+      <div>nickname</div>
+      <div>备注</div>
+    </d-col>
+    <d-col [dSpan]="6">
+      转移会话
+    </d-col>
+  </d-row>
+</d-card>
+
+
+<!--会议框-->
+<div class="chat-content-bottom">
+    <div class="chat-content-bottom-toolbar">
+      这里是工具栏
+    </div>
+    <textarea dTextarea>
+
+    </textarea>
+    <d-row>
+      <d-col [dSpan]="21">
+        这里是滚动通知栏....
+      </d-col>
+      <d-col [dSpan]="3">
+        <d-button class="chat-content-bottom-send" bsStyle="primary"> 发送 </d-button>
+      </d-col>
+    </d-row>
+</div>

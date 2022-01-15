@@ -1,0 +1,15 @@
+.chat-content-bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+
+  .chat-content-bottom-toolbar {
+    background-color: antiquewhite;
+  }
+
+  .chat-content-bottom-send {
+    padding-top: 5px;
+  }
+}

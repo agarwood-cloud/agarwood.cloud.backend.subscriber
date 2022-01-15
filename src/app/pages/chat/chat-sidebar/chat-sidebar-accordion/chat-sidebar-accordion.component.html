@@ -9,6 +9,7 @@
 <ng-template #innerListTemplate let-item="item">
   <div class="accordion-submenu my-menu">
     <a (click)="onClickUser()" style="cursor: pointer">
+      <!--这里要修改，不能使用这个组件-->
       <app-chat-sidebar-user [user]="user"></app-chat-sidebar-user>
     </a>
   </div>
