@@ -10,17 +10,10 @@ import { ChatSocketService } from './services/chat-socket.service';
 export class ChatComponent implements OnInit {
 
   /**
-   * socket.io client service
-   *
-   * @private
-   */
-  private readonly socket: ChatSocketService;
-
-  /**
    * get socket.io client instance
    */
-  public constructor() {
-    this.socket = new ChatSocketService();
+  public constructor(private readonly socket: ChatSocketService) {
+    // this.socket = new ChatSocketService();
   }
 
   /**

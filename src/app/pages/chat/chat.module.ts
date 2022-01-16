@@ -11,8 +11,12 @@ import { ChatSidebarUserComponent } from './chat-sidebar/chat-sidebar-user/chat-
 import { ChatSidebarComponent } from './chat-sidebar/chat-sidebar.component';
 import { ChatToolbarComponent } from './chat-toolbar/chat-toolbar.component';
 import { ChatComponent } from './chat.component';
+import { ChatSocketService } from './services/chat-socket.service';
 
 @NgModule({
+  providers: [
+    ChatSocketService,
+  ],
   declarations: [
     ChatComponent,
     ChatSidebarComponent,

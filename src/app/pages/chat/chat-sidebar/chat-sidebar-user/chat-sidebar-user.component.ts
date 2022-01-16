@@ -25,11 +25,10 @@ export class ChatSidebarUserComponent implements OnInit {
    * Set limit time for three month later
    */
   public constructor() {
-    this.limit = dayjs().add(3, 'month').unix();
   }
 
   public ngOnInit() {
-    console.log('ChatSidebarUserComponent');
+    this.limit = dayjs().add(3, 'month').unix();
   }
 
 }

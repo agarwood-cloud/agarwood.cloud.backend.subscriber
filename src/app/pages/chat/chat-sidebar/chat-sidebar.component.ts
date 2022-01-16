@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatSocketService } from '../services/chat-socket.service';
 import { Customer } from '../services/customer';
 
 @Component({
@@ -18,15 +19,38 @@ export class ChatSidebarComponent implements OnInit {
    */
   public customer: Customer;
 
+  /**
+   * ChatSocketService Object
+   *
+   * @private
+   */
+  private readonly chatSocket: ChatSocketService;
+
+  /**
+   * Whether the websocket is connected
+   */
+  public isOnline = false;
+
   public user;
 
   public message;
 
   /**
-   * init
+   * initializes the ChatSidebarComponent
+   *
+   * @param chatSocket ChatSocketService
    */
-  public constructor() {
+  public constructor(chatSocket: ChatSocketService) {
+    // socket is connected
+    this.chatSocket = chatSocket;
+  }
+
+  public ngOnInit(): void {
+    // set customer params
     this.customer = JSON.parse(localStorage.getItem('userInfo'));
+
+    console.log('this.socket', this.chatSocket);
+    this.isSocketConnected();
 
     this.user = {
       id: 1111,
@@ -48,11 +72,26 @@ export class ChatSidebarComponent implements OnInit {
       content: '最后一条消息最后一条消息最后一条消息最后一条消息最后一条消息最后一条消息最后一条消息',
       createdAt: '2022-01-14 00:00:00',
     };
-
   }
 
-  public ngOnInit(): void {
-    // this.customerService = 'John Doe';
+  /**
+   * Whether the websocket is connected
+   */
+  public isSocketConnected (): void {
+    this.chatSocket.socket.on('connect', () => {
+      console.log('connected');
+      this.isOnline = true;
+    });
+
+    this.chatSocket.socket.on('disconnect', () => {
+      console.log('disconnected');
+      this.isOnline = false;
+    });
+
+    this.chatSocket.socket.on('connect_error', () => {
+      console.log('connect_error');
+      this.isOnline = false;
+    });
   }
 
 }
