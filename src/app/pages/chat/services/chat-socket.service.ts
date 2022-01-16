@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as dayjs from 'dayjs';
 import { io, Socket } from 'socket.io-client';
-import { Websocket} from '../../../../config/websocket';
+import { Websocket } from '../../../../config/websocket';
 import { ImageMessage, NewsItemMessage, TextMessage, VideoMessage, VoiceMessage } from './message';
 
 @Injectable()

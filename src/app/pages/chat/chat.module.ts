@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CardModule, DataTableModule, SplitterModule } from 'ng-devui';
 
 import { RelativeTimeModule } from 'ng-devui/relative-time';
-import { ChatBottomBarComponent } from './chat-bottom-bar/chat-bottom-bar.component';
 import { ChatContentComponent } from './chat-content/chat-content.component';
 import { ChatRoutingModule } from './chat-routing.module';
 import { ChatSidebarAccordionComponent } from './chat-sidebar/chat-sidebar-accordion/chat-sidebar-accordion.component';
@@ -22,7 +21,6 @@ import { ChatSocketService } from './services/chat-socket.service';
     ChatSidebarComponent,
     ChatContentComponent,
     ChatToolbarComponent,
-    ChatBottomBarComponent,
     ChatSidebarUserComponent,
     ChatSidebarAccordionComponent,
   ],
