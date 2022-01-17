@@ -1,3 +1,5 @@
+@import 'src/app/@shared/styles/common.scss';
+
 .chat-content-bottom {
   position: absolute;
   right: 0;
@@ -6,10 +8,19 @@
   z-index: 1;
 
   .chat-content-bottom-toolbar {
-    background-color: antiquewhite;
+    font-size: large;
+    background-color: $devui-highlight-overlay;
+    border: 1px solid $devui-line;
+    em {
+      padding-left: 5px;
+    }
+  }
+
+  .chat-content-bottom-textarea {
+    width: 100%;
   }
 
   .chat-content-bottom-send {
-    padding-top: 5px;
+    padding: 5px;
   }
 }

@@ -1,10 +1,14 @@
 <d-card>
+  <!--昵称备注-->
   <d-row>
     <d-col [dSpan]="2">
       <d-avatar style="text-align: right" [gender]="'Female'" [name]="'组件头像'"></d-avatar>
     </d-col>
     <d-col [dSpan]="16">
-      <div>nickname</div>
+      <div>
+        <span>nickname</span>
+        <d-tag style="padding-left: 10px" [tag]="'女'" [labelStyle]="'red-w98'"></d-tag>
+      </div>
       <div>备注</div>
     </d-col>
     <d-col [dSpan]="6">
@@ -13,21 +17,37 @@
   </d-row>
 </d-card>
 
+<!--聊天记录-->
+<div class="chat-content-record">
+  聊天记录
+</div>
 
-<!--会议框-->
+<!--输入栏-->
 <div class="chat-content-bottom">
     <div class="chat-content-bottom-toolbar">
-      这里是工具栏
+      <em class="icon-emoji"></em>
+      <em class="icon-picture"></em>
+      <em class="icon-marketplace"></em>
     </div>
-    <textarea dTextarea>
-
-    </textarea>
+    <div class="chat-content-bottom-textarea">
+      <textarea
+        dTextarea
+        placeholder="Please Enter..."
+        id="chatContentTextArea"
+        [(ngModel)]="messageContent"
+        (paste)="sendClipboardImage($event)"
+      ></textarea>
+    </div>
     <d-row>
       <d-col [dSpan]="21">
         这里是滚动通知栏....
       </d-col>
       <d-col [dSpan]="3">
-        <d-button class="chat-content-bottom-send" bsStyle="primary"> 发送 </d-button>
+        <d-button
+          class="chat-content-bottom-send"
+          bsStyle="primary"
+          (click)="sendMessage()"
+        > Send </d-button>
       </d-col>
     </d-row>
 </div>

@@ -10,10 +10,15 @@ import { ChatSocketService } from './services/chat-socket.service';
 export class ChatComponent implements OnInit {
 
   /**
+   * @private
+   */
+  private readonly socket: ChatSocketService;
+
+  /**
    * get socket.io client instance
    */
-  public constructor(private readonly socket: ChatSocketService) {
-    // this.socket = new ChatSocketService();
+  public constructor(socket: ChatSocketService) {
+    this.socket = socket;
   }
 
   /**
@@ -24,16 +29,6 @@ export class ChatComponent implements OnInit {
    * It is invoked only once when the directive is instantiated.
    */
   public ngOnInit(): void {
-
-    this.socket.sendTextMessage('111111', 'test');
-
-    this.socket.sendImageMessage('dddd', 'dddd');
-
-    this.socket.sendNewsItemMessage('adfadf', 'adfadfa', 'adfads', 'fadfad');
-
-    this.socket.sendVideoMessage('adfadf', 'adfadfa', 'adfadfa', 'adfadfa', 'adfadf', 'adfadfa');
-
-    this.socket.sendVoiceMessage('adfadf', 'adfadfa', 'adfadfa');
 
     console.log('ChatComponent-ngOnInit');
   }

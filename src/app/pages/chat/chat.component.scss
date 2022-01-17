@@ -1,4 +1,7 @@
+@import 'src/app/@shared/styles/common.scss';
+
 .chat-splitter-border {
+  background-color: $devui-base-bg;
   height: 500px;
 
   .chat-sidebar-pane-content {

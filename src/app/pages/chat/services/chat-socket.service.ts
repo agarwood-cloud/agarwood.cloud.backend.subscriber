@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as dayjs from 'dayjs';
+import { Observable } from 'rxjs';
 import { io, Socket } from 'socket.io-client';
 import { Websocket } from '../../../../config/websocket';
 import { ImageMessage, NewsItemMessage, TextMessage, VideoMessage, VoiceMessage } from './message';
@@ -12,8 +14,15 @@ export class ChatSocketService  {
    */
   public socket: Socket;
 
+  /**
+   * @private
+   */
+  private readonly http: HttpClient;
+
   // init socket.io
-  public constructor() {
+  public constructor(http: HttpClient) {
+    this.http = http;
+
     // login
     this.socket = io(`${Websocket.HOST}:${Websocket.PORT}/chat`, {
       auth: {
@@ -165,6 +174,15 @@ export class ChatSocketService  {
     };
 
     this.socket.emit('wechat.message', message);
+  }
+
+  /**
+   * upload image
+   *
+   * @param image FormData
+   */
+  public uploadImage(image: FormData): Observable<any> {
+    return this.http.post('user-center/official-account/v3/chat/upload-image', image);
   }
 
 }

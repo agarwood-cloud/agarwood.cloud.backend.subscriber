@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { CardModule, DataTableModule, SplitterModule } from 'ng-devui';
+import { CardModule, DataTableModule, SplitterModule, TagsModule } from 'ng-devui';
 
 import { RelativeTimeModule } from 'ng-devui/relative-time';
 import { ChatContentComponent } from './chat-content/chat-content.component';
@@ -31,6 +31,7 @@ import { ChatSocketService } from './services/chat-socket.service';
     SplitterModule,
     CardModule,
     DataTableModule,
+    TagsModule,
   ]
 })
 export class ChatModule { }
