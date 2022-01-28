@@ -33,10 +33,10 @@ const routes: Routes = [
           m => m.OrderModule
           )
         },
-      {
-        path: 'chat',
-        loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)
-      },
+      // {
+      //   path: 'chat',
+      //   loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)
+      // },
       {
         path: '',
         redirectTo: 'dashboard',
