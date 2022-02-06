@@ -6,9 +6,19 @@ import { User } from 'src/app/@shared/models/user';
 @Injectable()
 export class AuthService {
 
-  constructor(private http: HttpClient) {}
+  /**
+   * Constructor
+   *
+   * @param http HttpClient
+   */
+  public constructor(private http: HttpClient) {}
 
-  // User Login
+  /**
+   * login
+   *
+   * @param account account
+   * @param password password
+   */
   public login(account: string, password: string): Observable<any>  {
     return this.http.post('/oauth-center/authentication/oauth/user-login', {
       username: account,
@@ -17,27 +27,37 @@ export class AuthService {
     });
   }
 
+  /**
+   * Logout
+   */
   public logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('expiredAt');
     localStorage.removeItem('userInfo');
   }
 
+  /**
+   * logout from server
+   */
   public logoutServer(): Observable<any> {
     return this.http.post('/oauth-center/authentication/oauth/user-logout', {});
   }
 
+  /**
+   * Set token and expired time
+   *
+   * @param userInfo User
+   */
   public setSession(userInfo: User): void {
     localStorage.setItem('token', userInfo.token);
     localStorage.setItem('userInfo', JSON.stringify(userInfo));
     localStorage.setItem('expiredAt', '3600');
   }
 
+  /**
+   * isLogin
+   */
   public isUserLoggedIn(): boolean {
-    if (localStorage.getItem('userInfo')) {
-      return true;
-    } else {
-      return false;
-    }
+    return !!localStorage.getItem('userInfo');
   }
 }
