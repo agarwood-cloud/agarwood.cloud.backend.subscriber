@@ -6,9 +6,9 @@ import { DEFAULT_LANG, I18N_LANGUAGES } from '../config/language-config';
   template: `<router-outlet></router-outlet>`,
 })
 export class AppComponent {
-  currentLang = localStorage.getItem('lang') || window.navigator.language.toLowerCase() || DEFAULT_LANG;
+  public currentLang: string = localStorage.getItem('lang') || window.navigator.language.toLowerCase() || DEFAULT_LANG;
 
-  constructor(private translate: TranslateService) {
+  public constructor(private translate: TranslateService) {
     this.translate.addLangs(I18N_LANGUAGES);
     translate.setDefaultLang(DEFAULT_LANG);
     translate.use(this.currentLang);

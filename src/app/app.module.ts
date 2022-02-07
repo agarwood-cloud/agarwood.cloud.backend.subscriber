@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 class I18NLoader implements TranslateLoader {
-  getTranslation(lang: 'zh-cn' | 'en-us'): Observable<Object> {
+  public getTranslation(lang: 'zh-cn' | 'en-us'): Observable<Object> {
     return of(I18N[lang]);
   }
 }
