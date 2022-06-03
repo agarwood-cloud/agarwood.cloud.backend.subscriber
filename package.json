@@ -1,6 +1,7 @@
 {
   "name": "agarwood",
   "version": "1.0.0",
+  "license": "GPL-3.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -27,8 +28,8 @@
     "color": "^3.1.3",
     "dayjs": "^1.10.7",
     "echarts": "^5.1.1",
-    "ng-devui": "^12.0.0",
-    "ng-devui-admin": "^2.0.2",
+    "ng-devui": "^13.2.0",
+    "ng-devui-admin": "^13.0.0",
     "ng-devui-materials": "^1.0.0",
     "rxjs": "~6.6.0",
     "socket.io-client": "^4.4.1",

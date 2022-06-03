@@ -6,7 +6,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 import { I18N } from '../config/language-config';
 import { CoreModule } from './@core/core.module';
-import { HeaderInterceptor } from './@core/services/header-Interceptor.service';
+import { HeaderInterceptor } from './@core/services/header-interceptor.service';
 import { SharedModule } from './@shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
