@@ -7,7 +7,7 @@ import { DEFAULT_LAYOUT_CONFIG } from './default-layout.config';
   providedIn: 'root',
 })
 export class DaLayoutService {
-  private _config: DaLayoutConfig = DEFAULT_LAYOUT_CONFIG;
+  private readonly _config: DaLayoutConfig = DEFAULT_LAYOUT_CONFIG;
   private layoutSubject = new ReplaySubject<DaLayoutConfig>(1);
 
   constructor() {

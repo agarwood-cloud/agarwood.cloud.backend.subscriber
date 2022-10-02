@@ -1,41 +1,41 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import {
-  LayoutModule,
   AccordionModule,
-  SearchModule,
+  AlertModule,
   AvatarModule,
   BadgeModule,
+  BreadcrumbModule,
+  ButtonModule,
+  DCommonModule,
+  DrawerModule,
   DropDownModule,
   FormModule,
+  LayoutModule,
+  ModalModule,
+  RadioModule,
+  SearchModule,
   TabsModule,
   TextInputModule,
-  ToggleModule,
-  ButtonModule,
-  DrawerModule,
-  DCommonModule,
-  AlertModule,
   ToastModule,
+  ToggleModule,
   TooltipModule,
-  RadioModule,
-  BreadcrumbModule,
-  ModalModule,
 } from 'ng-devui';
 import { I18nModule } from 'ng-devui/i18n';
-import { TranslateModule } from '@ngx-translate/core';
-import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderLogoComponent } from './components/header/header-logo/header-logo.component';
+import { HeaderOperationComponent } from './components/header/header-operation/header-operation.component';
+import { HeaderComponent } from './components/header/header.component';
+import { NavbarComponent } from './components/header/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { PersonalizeComponent } from './components/personalize/personalize.component';
-import { HeaderOperationComponent } from './components/header/header-operation/header-operation.component';
-import { NavbarComponent } from './components/header/navbar/navbar.component';
-import { DaGridModule } from './layouts/da-grid';
-import { HeaderLogoComponent } from './components/header/header-logo/header-logo.component';
-import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { DaGridModule } from './layouts/da-grid';
 
 const DEVUI_MODULES = [
   LayoutModule,
